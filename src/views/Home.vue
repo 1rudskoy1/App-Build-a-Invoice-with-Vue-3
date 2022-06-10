@@ -6,7 +6,7 @@
         <span>There are 4 total invoices</span>
       </div>  
       <div class="right flex">
-        <div @click="toggleFilterMenu" class="filter flex" ref="filter">
+        <div @click="toggleFilterMenu" class="filter flex">
           <span>Filter by status</span>
           <img src="../assets/icon-arrow-down.svg" alt="">
           <ul v-show="filterMenu" class="filter-menu">
@@ -16,12 +16,12 @@
             <li>Clear Filter</li>
           </ul>
         </div>
-      </div>
-      <div @click="newInvoice" class="button flex">
-        <div class="inner-button flex">
-          <img src="../assets/icon-plus.svg" alt="">
+        <div @click="newInvoice" class="button flex">
+          <div class="inner-button flex">
+            <img src="../assets/icon-plus.svg" alt="">
+          </div>
+          <span>New Invoice</span>
         </div>
-        <span>New Invoice</span>
       </div>
     </div>
   </div>
@@ -30,6 +30,19 @@
 <script>
 export default {
   name: "Home",
+  data(){
+    return {
+      filterMenu: false
+    }
+  },
+  methods:{
+    toggleFilterMenu(){
+      this.filterMenu = !this.filterMenu;
+    },
+    NewInvoice(){
+      
+    }
+  },
   components: {},
 };
 </script>
@@ -52,13 +65,28 @@ export default {
             font-size: 12px;
           }
         }
+         .button{
+          padding: 8px 10px;
+          background-color: #7c5dfa;
+          border-radius: 40px;
+          .inner-button{
+            margin-right: 8px;
+            border-radius: 50%;
+            padding: 8px;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+
+            img{
+              width: 10px;
+              height: 10px;
+            }
+          }
+        }
         .filter{
           position: relative;
           margin-right: 40px;
-
-          span, img{
-            pointer-events: none;
-          }
+          cursor: pointer;
           img{
             margin-left: 12px;
             width: 9px;
